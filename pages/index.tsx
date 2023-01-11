@@ -1,20 +1,19 @@
+import clsx from 'clsx'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 import { Inter } from '@next/font/google'
 import { useAtom } from 'jotai'
 import { testAtom } from '../store'
-import clsx from 'clsx'
-import Test from '../components/Test'
+import LocalStateExample from '@/components/LocalStateExample'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [{ darkmode }, setTest] = useAtom(testAtom)
   return (
-    <div
-      className={clsx(
-        'flex min-h-screen flex-col bg-[var(--blue-300)]',
-        inter.className
-      )}
+    <motion.div
+      animate={{ backgroundColor: darkmode ? 'var(--blue-300)' : '#fff' }}
+      className={clsx('flex min-h-screen flex-col', inter.className)}
     >
       <Head>
         <title>Create Next App</title>
@@ -37,7 +36,7 @@ export default function Home() {
           </button>
           <p>state: {darkmode ? 'dark' : 'light'}</p>
         </div>
-        <Test />
+        <LocalStateExample />
       </main>
       <footer className="mt-auto flex justify-center gap-3">
         <p>hello</p>
@@ -45,6 +44,6 @@ export default function Home() {
         <p>hello</p>
         <p>hello</p>
       </footer>
-    </div>
+    </motion.div>
   )
 }

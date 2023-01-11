@@ -2,7 +2,7 @@ import { useAtom, atom } from 'jotai'
 
 const atom1 = atom(false)
 
-const Test = () => {
+const LocalStateExample = () => {
   const [isTrue, setIsTrue] = useAtom(atom1)
   return (
     <div className="flex items-center gap-3">
@@ -17,4 +17,4 @@ const Test = () => {
   )
 }
 
-export default Test
+export default LocalStateExample
